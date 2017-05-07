@@ -47,6 +47,7 @@ const wordSetIn = function(){
 		console.log(i)
 	}
 }
+
 const starInterval = function(){
 	play=true
 	interval = setInterval(wordSetIn, MilisecPrWord)
