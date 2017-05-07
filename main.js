@@ -9,28 +9,31 @@ let MilisecPrWord = 1500
 // Document references
 const $readSpeedShow$ = $('#readSpeedShow')
 const $wordContainer$ = $('#wordContainer')
-const $wordsPrSec$ = $('#textSpeed').value
+let $wordsPrSec$ = $('#textSpeed')
+let $textInput$ = $('#textInput')
+let $wordStage$ =$('#wordStage')
 	//Controller references 
 	const $play$ = $('#play')
 	const $pauseResume$= $('#pauseResume')
 	const $restart$ =$('#restart')
-	let $font$ = $('#textFont').value
+	let $font$ = $('#textFont')
+
+
+// Jquery converter!
+const changeFont= function(){
+	$wordContainer$.css('font-family', $font$.val())
+}
 
 const setReadSpeed =function(){
 	play=false
-	wordsPrSec = document.getElementById('textSpeed').value
-	MilisecPrWord = (60000/wordsPrSec)
-	readSpeedShow.innerHTML = ` ${wordsPrSec} words Pr Sec`;
+	MilisecPrWord = (60000/$wordsPrSec$.val())
+	$readSpeedShow$.text(`${$wordsPrSec$.val()} words Pr Sec`);
 }
 
-const changeFont= function(){
-	font= document.getElementById('textFont').value
-	wordContainer.style.fontFamily = font;
-	console.log(font)
-}
 
+// getting texts and removing double spacings
 const getText =function(){
-	let text= document.getElementById('textInput').value
+	let text= $textInput$.val()
 	if(text.length !== 0){
 		text = text.replace( /\s\s +/g, ' ' )  // control for double spacing 
 		textAsArray = text.split(' ')
@@ -40,38 +43,27 @@ const getText =function(){
 		alert('You need to add text to start')
 	}
 }
-
-const removeLastWord= function(){
-	wordContainer.removeChild(wordContainer.lastChild)
-}
-
+	//Changing read word
 const wordSetIn = function(){
 	if(i<textAsArray.length && play){
-		removeLastWord()
-		changeReadWord(textAsArray[i]) 
+		$wordStage$.empty()
+		$wordStage$.text(textAsArray[i]) 
 		i++
 		console.log(i)
 	}
 }
+
+// Js native
 
 const starInterval = function(){
 	play=true
 	interval = setInterval(wordSetIn, MilisecPrWord)
 }
 
-
 const stopInteval = function(){
 	play= false
 	clearInterval(interval)
 }
-
-
-const changeReadWord= function(word){
-	let h3Element=document.createElement('p')
-	h3Element.innerHTML = word
-	wordContainer.append(h3Element)
-}
-
 
 const pause =function(){
 	if(play === true){
