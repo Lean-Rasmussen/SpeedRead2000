@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+
 	<title>Speed Read 2000</title>
 </head>
 <body>
@@ -12,9 +13,9 @@
 	 </div> 
 
 	<div id='settings'>
-		<button onclick= 'getText()'>Read</button>
-		<button onclick= 'pause()'>Pause/Resume</button>
-		<button onclick= 'restart()'>Restart</button>
+		<button id='play' onclick= 'getText()'>Read</button>
+		<button id='pauseResume' onclick= 'pause()'>Pause/Resume</button>
+		<button id='restart' onclick= 'restart()'>Restart</button>
 		<div id="readSpeed">
 			<input id="textSpeed" min='50' max='600' value='120' step='10' type="range" onchange="setReadSpeed()"/>
 			<p id='readSpeedShow'></p>
@@ -33,5 +34,6 @@
 	<textarea placeholder="please put the text you want to read here" id='textInput' type="text" name=""></textarea> 
 
 	</body>
+	<script type="text/javascript" src=scripts/jquery-3.2.1.min.js></script>
 	<script type="text/javascript" src='main.js'></script>
 </html>

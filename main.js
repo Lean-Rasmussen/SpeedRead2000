@@ -1,14 +1,20 @@
 'use strict';
-
-let readSpeedShow = document.getElementById('readSpeedShow')
+// varriables
 let play =false
 let textAsArray=[];
 let i=0;
-const wordContainer = document.getElementById('wordContainer')
-let MilisecPrWord = 1500
-let wordsPrSec = document.getElementById('textSpeed').value
 let interval;
-let font = document.getElementById('textFont').value
+let MilisecPrWord = 1500
+
+// Document references
+const $readSpeedShow$ = $('#readSpeedShow')
+const $wordContainer$ = $('#wordContainer')
+const $wordsPrSec$ = $('#textSpeed').value
+	//Controller references 
+	const $play$ = $('#play')
+	const $pauseResume$= $('#pauseResume')
+	const $restart$ =$('#restart')
+	let $font$ = $('#textFont').value
 
 const setReadSpeed =function(){
 	play=false
